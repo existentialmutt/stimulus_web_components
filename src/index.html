@@ -1,0 +1,65 @@
+---
+# Feel free to add content and custom Front Matter to this file.
+
+layout: home
+---
+
+<h1>Basic Stimulus ConControllers as Web Components</h1>
+
+<h2>1. Hello World</h2>
+<a href="https://stimulus.hotwired.dev/handbook/hello-stimulus#is-this-thing-on%3F">[stimulus handbook]</a>
+
+<h4>Stimulus</h4>
+<div data-controller="hello-world"></div>
+
+<h4>Web Component (Raw)</h4>
+<raw-hello-world></raw-hello-world>
+
+<h4>Web Component (Lit)</h4>
+<lit-hello-world></lit-hello-world>
+
+
+
+<h2>2. Simple Greeter</h2>
+<a href="https://stimulus.hotwired.dev/handbook/hello-stimulus#actions-respond-to-dom-events">[stimulus handbook]</a>
+
+<h4>Stimulus</h4>
+<div data-controller="simple-greeter">
+  <input data-simple-greeter-target="name" type="text">
+  <button data-action="click->simple-greeter#greet">Greet</button>
+</div>
+
+<h4>Web Component (Raw)</h4>
+<raw-simple-greeter></raw-simple-greeter>
+
+<h4>Web Component (Lit)</h4>
+<lit-simple-greeter></lit-simple-greeter>
+
+
+<h2>Slotted Greeter</h2>
+<p>
+  The big value proposition for Stimulus is that it works "for the HTML you already have" i.e. HTML that has been rendered on the server.
+  Web components can use slots to inject server-rendered HTML.
+  WC slots provide similar functionality to Stimulus targets, allowing the app to assign special meaning to child nodes which can be referenced in the component's script. 
+</p>
+
+<h4>Web Component (Raw)</h4>
+<raw-slotted-greeter>
+  <input type="text" slot="name">
+  <button slot="submit">Greet</button>
+</raw-slotted-greeter>
+
+<h4>Web Component (Lit)</h4>
+<lit-slotted-greeter>
+  <input type="text" slot="name">
+  <button slot="submit">Greet</button>
+</lit-slotted-greeter>
+
+<h2>Handling Dynamic Content</h2>
+<p>
+  Stimulus gracefully handles dynamic content updates after the initial page load
+  by providing a series of MutationObservers that watch for changes to the DOM and keep targets and actions up to date.
+  TODO Can we use the slotchange event to accomplish something similar with Web Components?
+</p>
+
+<h2>Catalyst can do a lot of this I bet... TODO</h2>

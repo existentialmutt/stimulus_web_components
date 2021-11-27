@@ -1,7 +1,19 @@
 import "index.scss"
 
-// Import all javascript files from src/_components
-const componentsContext = require.context("bridgetownComponents", true, /.js$/)
-componentsContext.keys().forEach(componentsContext)
+// Stimulus
+import { Application } from "@hotwired/stimulus"
+import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers"
 
-console.info("Bridgetown is loaded!")
+window.Stimulus = Application.start()
+const context = require.context("./controllers", true, /\.js$/)
+Stimulus.load(definitionsFromContext(context))
+
+// Web Components (Lit)
+import LitHelloWorld from "./lit-components/lit-hello-world"
+import LitSimpleGreeter from "./lit-components/lit-simple-greeter"
+import LitSlottedGreeter from "./lit-components/lit-slotted-greeter"
+
+// Web Components (Raw)
+import { RawHelloWorld } from "./raw-components/raw-hello-world"
+import RawSimpleGreeter from "./raw-components/raw-simple-greeter"
+import RawSlottedGreeter from "./raw-components/raw-slotted-greeter"
