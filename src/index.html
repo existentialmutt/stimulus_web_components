@@ -40,7 +40,7 @@ layout: home
 <p>
   The big value proposition for Stimulus is that it works "for the HTML you already have" i.e. HTML that has been rendered on the server.
   Web components can use slots to inject server-rendered HTML.
-  WC slots provide similar functionality to Stimulus targets, allowing the app to assign special meaning to child nodes which can be referenced in the component's script. 
+  WC slots can be used similarly to Stimulus targets, allowing the app to assign special meaning to child nodes which can be referenced in the component's script.
 </p>
 
 <h4>Web Component (Raw)</h4>
@@ -61,5 +61,35 @@ layout: home
   by providing a series of MutationObservers that watch for changes to the DOM and keep targets and actions up to date.
   TODO Can we use the slotchange event to accomplish something similar with Web Components?
 </p>
+
+<h4>Stimulus</h4>
+<div data-controller="simple-greeter" id="stimulusDynamicGreeter">
+  <input data-simple-greeter-target="name" type="text">
+  <button data-action="click->simple-greeter#greet">Greet</button>
+  <div>
+    Rendered at <current-time></current-time>
+    <inner-html-loader target="#stimulusDynamicGreeter" url="/stimulus-dynamic-greeter">Reload</inner-html-loader>  
+  </div>
+</div>
+
+<h4>Web Component (Raw)</h4>
+<raw-dynamic-greeter id="rawDynamicGreeter">
+  <input type="text" slot="name">
+  <button slot="submit">Greet</button>
+  <div>
+    Rendered at <current-time></current-time>
+    <inner-html-loader target="#rawDynamicGreeter" url="/raw-dynamic-greeter">Reload</inner-html-loader>  
+  </div>
+</raw-dynamic-greeter>
+
+<h4>Web Component (Lit)</h4>
+<lit-dynamic-greeter id="litDynamicGreeter">
+  <input type="text" slot="name">
+  <button slot="submit">Greet</button>
+  <div>
+    Rendered at <current-time></current-time>
+    <inner-html-loader target="#litDynamicGreeter" url="/lit-dynamic-greeter">Reload</inner-html-loader>  
+  </div>
+</lit-dynamic-greeter>
 
 <h2>Catalyst can do a lot of this I bet... TODO</h2>
