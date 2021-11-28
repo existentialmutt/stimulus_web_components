@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.5.tgz#9283c9ce5b289a3c4f61c12757469e59377f81f3"
   integrity sha512-6nFkfkmSeV/rqSaS4oWHgmpnYw194f6hmWF5is6b0J1naJZoiD0NTc9AiUwPHvWsowkjuHErCZT1wa0jg+BLIA==
 
+"@github/catalyst@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@github/catalyst/-/catalyst-1.1.4.tgz#b1eb7b35f590d882230ca516f2672a13591b7ce3"
+  integrity sha512-Q805VHpMeDev33e/73HcbyXaL7uIqW5bo6+XsoLkcY1oTGJVTZcxr1DDrI8nBfwhmxy3BADqL6WJ0lM/GHhI8w==
+
 "@hotwired/stimulus-webpack-helpers@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@hotwired/stimulus-webpack-helpers/-/stimulus-webpack-helpers-1.0.1.tgz#4cd74487adeca576c9865ac2b9fe5cb20cef16dd"

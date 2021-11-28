@@ -1,8 +1,5 @@
 import {LitElement, html} from 'lit';
 
-// TODO get decoractors working and use @queryAssignedNodes
-// https://lit.dev/docs/components/shadow-dom/#query-assigned-nodes 
-
 export default class LitSlottedGreeter extends LitElement {
   render() {
     return html`

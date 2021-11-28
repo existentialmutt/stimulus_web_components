@@ -4,7 +4,7 @@
 layout: home
 ---
 
-<h1>Basic Stimulus ConControllers as Web Components</h1>
+<h1>Replicating Stimulus Functionality with Web Components</h1>
 
 <h2>1. Hello World</h2>
 <a href="https://stimulus.hotwired.dev/handbook/hello-stimulus#is-this-thing-on%3F">[stimulus handbook]</a>
@@ -17,8 +17,6 @@ layout: home
 
 <h4>Web Component (Lit)</h4>
 <lit-hello-world></lit-hello-world>
-
-
 
 <h2>2. Simple Greeter</h2>
 <a href="https://stimulus.hotwired.dev/handbook/hello-stimulus#actions-respond-to-dom-events">[stimulus handbook]</a>
@@ -59,7 +57,7 @@ layout: home
 <p>
   Stimulus gracefully handles dynamic content updates after the initial page load
   by providing a series of MutationObservers that watch for changes to the DOM and keep targets and actions up to date.
-  TODO Can we use the slotchange event to accomplish something similar with Web Components?
+  Let's use the slotchange event to accomplish something similar with Web Components.
 </p>
 
 <h4>Stimulus</h4>
@@ -92,4 +90,63 @@ layout: home
   </div>
 </lit-dynamic-greeter>
 
-<h2>Catalyst can do a lot of this I bet... TODO</h2>
+<h2>Github Catalyst</h2>
+
+<p>
+  So web components can support dynamic content, but you need to include custom code and jump through slots which is a pain and can be error-prone.
+  <a href="https://github.github.io/catalyst/">Github Catalyst</a> is another web component library that is heavily inspired by Stimulus.
+  Catalyst works by taking regular vanilla web components and enhancing them with the @controller decorator (my code uses the decorator-free function version).
+  Catalyst enhanced components get a few additional features, including Targets and Actions.
+  Just like in Stimulus, Catalyst targets allow you to identify one or many DOM nodes by name.
+  Catalyst Actions are just like Stimulus's.  They allow child elements to self-assign event handlers which are kept up to date with dynamic content.
+</p>
+
+<h4>Hello World</h4>
+<catalyst-hello-world></catalyst-hello-world>
+
+<h4>Template in Light DOM</h4>
+<catalyst-light-greeter>
+  <input data-target="catalyst-light-greeter.name" type="text">
+  <button data-action="click:catalyst-light-greeter#greet">Greet</button>
+</catalyst-light-greeter>
+
+<h4>Template in Shadow DOM</h4>
+<catalyst-shadow-greeter></catalyst-shadow-greeter>
+
+<h4>Dynamic Re-rendering (Light DOM)</h4>
+<p>
+  We can use the same component as the static light DOM greeter
+</p>
+<catalyst-light-greeter id="catalystDynamicLightGreeter">
+  <input data-target="catalyst-light-greeter.name" type="text">
+  <button data-action="click:catalyst-light-greeter#greet">Greet</button>
+  <div>
+    Rendered at <current-time></current-time>
+    <inner-html-loader target="#catalystDynamicLightGreeter" url="/catalyst-dynamic-light-greeter">Reload</inner-html-loader>  
+  </div>
+</catalyst-light-greeter>
+
+<h4>Dynamic Re-rendering in Shadow DOM via Slots</h4>
+<catalyst-slotted-greeter id="catalystSlottedGreeter">
+  <input data-target="catalyst-slotted-greeter.name" type="text">
+  <button data-action="click:catalyst-slotted-greeter#greet">Greet</button>
+  <div>
+    Rendered at <current-time></current-time>
+    <inner-html-loader target="#catalystSlottedGreeter" url="/catalyst-slotted-greeter">Reload</inner-html-loader>  
+  </div>
+</catalyst-slotted-greeter>
+
+<h4>Combining Lit and Catalyst</h4>
+<p>
+  From what I can tell, Catalyst decorating plain old HTMLElement classes means that you should be able to combine Catalyst
+  with a client-rendering oriented web component library like Lit.
+  I'd recommend sticking to one rendering strategy per component when possible, but it's nice to know the option is there if you need it.
+</p>
+<catalyst-lit-slotted-greeter id="catalystLitSlottedGreeter">
+  <input data-target="catalyst-lit-slotted-greeter.name" type="text">
+  <button data-action="click:catalyst-lit-slotted-greeter#greet">Greet</button>
+  <div>
+    Rendered at <current-time></current-time>
+    <inner-html-loader target="#catalystLitSlottedGreeter" url="/catalyst-lit-slotted-greeter">Reload</inner-html-loader>
+  </div>
+</catalyst-lit-slotted-greeter>
